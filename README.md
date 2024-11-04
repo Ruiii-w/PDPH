@@ -1,18 +1,25 @@
 # PDPH
-PDPH: A Performant Dynamic Perfect Hash Index Using Hybrid
-Strategies for Storage Organizations
 
-We introduce PDPH, a performant dynamic perfect
-hash index with hybrid storage organization that hugely reduces
-rehashing overhead. (1) PDPH applies loose bucket organizations
-with a strict bucket isolation policy, which are design decisions that
-other methods have overlooked within the design space. The loose
-bucket organization eliminates redundant rehashing attempts, and
-the strict bucket isolation policy prevents access to unused records,
-which mitigates the above amplification issue during rehashing
-processes at the cost of temporary space overhead. (2) PDPH pro-
-poses multiple-level hybrid structures for buckets with different
-utilization, respectively. It exploits the unevenness of the distribu-
-tion between hash buckets with different utilization to handle the
-potential memory inefficiency caused by loose bucket organizations
-while preserving the query performance.
+## Env
+
+- gflags
+- GCC
+
+## Structure
+
+Header files:  
+`PDPH.h` is the header file of our proposal for testing.
+
+`container.h` contains definitions for various basic index and storage structures.
+
+`murmur3.h` is the header file for the hash function used in PDPH, with MurmurHash3 as the default.
+
+`util.h` includes numerous macro definitions and helper functions.
+
+
+## usage
+
+```
+./PDPH -index=[index name] -dataset=[dataset file path] -thread=[number of threads]
+```
+
